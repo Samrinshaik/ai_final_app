@@ -1,8 +1,8 @@
 import streamlit as st
-import pickle
+import joblib
 import numpy as np
 
-import joblib
+
 model = joblib.load("model.pkl")
 
 st.title("🚀 Rocket Thrust Predictor")
@@ -17,4 +17,5 @@ mass = st.number_input("Mass (kg)")
 if st.button("Predict Thrust"):
     data = np.array([[time, altitude, velocity, mass]])
     result = model.predict(data)
+
     st.success(f"Predicted Thrust: {result[0]:.2f} N")
